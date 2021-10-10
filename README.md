@@ -15,6 +15,5 @@
 
   The system will connect receiver and donor by connecting them via  contact number and additional information ,whoever  matchs the requirements.
 
-Once the doner is done with the amount of blood they wants to donate then they their information will be removed from the database and same happens for the receiver as they are done with the amount of blood they requested then their information will be removed from the database
+Once the donor is done with the amount of blood they wants to donate then they their information will be removed from the database and same happens for the receiver as they are done with the amount of blood they requested then their information will be removed from the database
 
-   In case of emergency ambulance service is provided user will be able to contact near by ambulance service though this app
