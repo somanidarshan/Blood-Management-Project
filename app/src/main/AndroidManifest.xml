@@ -11,6 +11,7 @@
         android:theme="@style/Theme.BloodBankManagement">
         <activity
             android:name=".CategorySelectedActivity"
+            android:parentActivityName=".MainActivity"
             android:exported="true" />
         <activity android:name=".MainActivity" />
         <activity android:name=".RecipientRegistrationActivity" />
@@ -24,6 +25,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

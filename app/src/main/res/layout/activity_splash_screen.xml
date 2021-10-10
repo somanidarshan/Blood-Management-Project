@@ -19,23 +19,24 @@
         android:layout_width="match_parent">
 
         <ImageView
-            android:layout_height="150dp"
-            android:layout_width="150dp"
-            android:src="@drawable/applogo"
+            android:layout_height="200dp"
+            android:layout_width="200dp"
+            android:src="@drawable/blood_donation"
             android:layout_marginTop="20dp"
             android:layout_gravity="center"
             android:id="@+id/logo"/>
 
         <TextView
-            android:gravity="center"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
             android:id="@+id/title"
-            android:layout_marginEnd="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:textStyle="bold"
+            android:layout_marginEnd="20dp"
+            android:gravity="center"
+            android:text="Blood Donation App"
+            android:textColor="#000"
             android:textSize="30sp"
-            android:textColor="#000" android:text="Blood Donation App"/>
+            android:textStyle="bold" />
 
         <TextView
             android:gravity="center"
