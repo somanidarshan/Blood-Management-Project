@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BloodBankManagement">
-        <activity android:name=".MainActivity"></activity>
+        <activity
+            android:name=".CategorySelectedActivity"
+            android:exported="true" />
+        <activity android:name=".MainActivity" />
         <activity android:name=".RecipientRegistrationActivity" />
         <activity android:name=".DonorRegistrationActivity" />
         <activity android:name=".SelectRegistrationActivity" />
