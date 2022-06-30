@@ -7,6 +7,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.Window;
+import android.view.WindowManager;
 
 import com.example.bloodbankmanagement.Adapter.UserAdapter;
 import com.example.bloodbankmanagement.Model.User;
@@ -34,6 +37,9 @@ public class CategorySelectedActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_category_selected);
 
         toolbar = findViewById(R.id.toolbar);
@@ -99,5 +105,15 @@ public class CategorySelectedActivity extends AppCompatActivity {
             }
         });
 
+    }
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch(item.getItemId()){
+            case android.R.id.home:
+                finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

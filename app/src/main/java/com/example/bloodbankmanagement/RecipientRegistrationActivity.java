@@ -12,6 +12,8 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -60,6 +62,9 @@ public class RecipientRegistrationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_recipient_registration);
         backButton = findViewById(R.id.backButton);
         backButton.setOnClickListener(new View.OnClickListener() {
@@ -100,6 +105,7 @@ public class RecipientRegistrationActivity extends AppCompatActivity {
                 final String idNumber = registerIdNumber.getText().toString().trim();
                 final String phoneNumber = registerPhoneNumber.getText().toString().trim();
                 final String bloodGroup = bloodGroupsSpinner.getSelectedItem().toString();
+                final String type="recipient";
 
                 if (TextUtils.isEmpty(email)){
                     registerEmail.setError("Email is required!");
@@ -150,7 +156,7 @@ public class RecipientRegistrationActivity extends AppCompatActivity {
                                 userInfo.put("idnumber", idNumber);
                                 userInfo.put("phonenumber", phoneNumber);
                                 userInfo.put("bloodgroup", bloodGroup);
-                                userInfo.put("type", "recipient");
+                                userInfo.put("type", type);
                                 userInfo.put("search", "recipient"+bloodGroup);
 
                                 userDatabaseRef.updateChildren(userInfo).addOnCompleteListener(
@@ -164,7 +170,7 @@ public class RecipientRegistrationActivity extends AppCompatActivity {
                                                 }
 
                                                 finish();
-                                                //loader.dismiss();
+                                                loader.dismiss();
                                             }
                                         });
 

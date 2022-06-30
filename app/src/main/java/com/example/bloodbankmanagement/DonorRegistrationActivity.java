@@ -13,6 +13,8 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -62,6 +64,9 @@ public class DonorRegistrationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_donor_registration);
 
         backButton = findViewById(R.id.backButton);
@@ -103,6 +108,7 @@ public class DonorRegistrationActivity extends AppCompatActivity {
                 final String idNumber = registerIdNumber.getText().toString().trim();
                 final String phoneNumber = registerPhoneNumber.getText().toString().trim();
                 final String bloodGroup = bloodGroupsSpinner.getSelectedItem().toString();
+                final String type="donor";
 
                 if (TextUtils.isEmpty(email)){
                     registerEmail.setError("Email is required!");
@@ -146,14 +152,14 @@ public class DonorRegistrationActivity extends AppCompatActivity {
                                 String currentUserId = mAuth.getCurrentUser().getUid();
                                 userDatabaseRef = FirebaseDatabase.getInstance().getReference()
                                         .child("users").child(currentUserId);
-                                HashMap userInfo = new HashMap();
+                                HashMap<String, Object> userInfo = new HashMap<String, Object>();
                                 userInfo.put("id", currentUserId);
                                 userInfo.put("name", fullName);
                                 userInfo.put("email", email);
                                 userInfo.put("idnumber", idNumber);
                                 userInfo.put("phonenumber", phoneNumber);
                                 userInfo.put("bloodgroup", bloodGroup);
-                                userInfo.put("type", "donor");
+                                userInfo.put("type", type);
                                 userInfo.put("search", "donor"+bloodGroup);
 
                                 userDatabaseRef.updateChildren(userInfo).addOnCompleteListener(new OnCompleteListener() {
@@ -202,7 +208,7 @@ public class DonorRegistrationActivity extends AppCompatActivity {
                                                     @Override
                                                     public void onSuccess(Uri uri) {
                                                         String imageUrl = uri.toString();
-                                                        Map newImageMap = new HashMap();
+                                                        Map<String, Object> newImageMap = new HashMap<>();
                                                         newImageMap.put("profilepictureurl", imageUrl);
 
                                                         userDatabaseRef.updateChildren(newImageMap).addOnCompleteListener(new OnCompleteListener() {
@@ -223,6 +229,7 @@ public class DonorRegistrationActivity extends AppCompatActivity {
 
                                         }
                                     });
+
 
                                     Intent intent = new Intent(DonorRegistrationActivity.this, MainActivity.class);
                                     startActivity(intent);
